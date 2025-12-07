@@ -79,6 +79,9 @@
 
     A: 平均时钟周期等于总CPU周期/总指令数
 
+22. Q: 什么是指令集
+
+    A: repertoire of instructions of a computer/计算机的指令库
 
 
 
