@@ -83,7 +83,9 @@
 
     A: repertoire of instructions of a computer/计算机的指令库
 
+23. Q: Regdst(Register Destination - 目标寄存器选择) / AluSrc (ALU Source - ALU 数据源选择)
 
+    A:
 
 
 
