@@ -87,6 +87,11 @@
 
     A:
 
+24. Q: MIPS 架构的指令格式有哪些？
+
+    A: 1. R-Format(ADD) MIPS汇编语言中最常见的指令格式，用于算数运算，逻辑运算，寄存器间数据传输等操作。 格式: opcode(6 bits) | rs(5 bits) | rt(5 bits) | rd(5 bits)
+       2.
+       3.
 
 
 
