@@ -11,8 +11,10 @@
 5. Q: 机器语言的优势
    
    A: 1. 允许程序员使用更自然地语言进行思考
+   
       2. 语言可以根据其预期用途进行设计
-      3. 可在具有不同指令集架构(ISA)的不同平台进行移植
+            
+      4. 可在具有不同指令集架构(ISA)的不同平台进行移植
 
 7. Q:pytorch 是什么
 
@@ -25,6 +27,7 @@
 11. Q: 什么是指令集架构(ISA)?
 
     A: 1. 汇编语言程序员或者编译器眼中计算机系统属性。包括指令集可以执行哪些操作？指令格式？数据储存在哪里？寻址方式，如何访问数据？以及异常情况处理。
+    
       2. 硬件与最底层软件的抽象接口
          
 13. Q:现代化指令集架构有哪些？
@@ -69,29 +72,32 @@
 19. Q: 什么是CPU时间？
 
     A: 1. 处理特定任务所花费的时间，不包括等待I/O或者运行其他程序的时间， 包括用户CPU时间以及系统CPU时间，不同的程序受CPU和系统性能的影响程度也不同。
+    
        2. CPU时间 = CPU时钟周期(CPU clock cycles) * CPU单周期时间(Clock cycle time) = CPU时钟周期(CPU clock cycles) / CPU时钟频率(Clock rates)
 
-20. Q: CPU时钟周期表达式
+21. Q: CPU时钟周期表达式
 
     A: Instruction count(IC/指令数) * Cycles Per Instruction(CPI/每个指令所需周期数)
 
-21. Q: Average CPI， 平均时钟周期 
+22. Q: Average CPI， 平均时钟周期 
 
     A: 平均时钟周期等于总CPU周期/总指令数
 
-22. Q: 什么是指令集
+23. Q: 什么是指令集
 
     A: repertoire of instructions of a computer/计算机的指令库
 
-23. Q: Regdst(Register Destination - 目标寄存器选择) / AluSrc (ALU Source - ALU 数据源选择)
+24. Q: Regdst(Register Destination - 目标寄存器选择) / AluSrc (ALU Source - ALU 数据源选择)
 
     A:
 
-24. Q: MIPS 架构的指令格式有哪些？
+25. Q: MIPS 架构的指令格式有哪些？
 
     A: 1. R-Format(ADD) 寄存器型  MIPS汇编语言中最常见的指令格式，用于算数运算，逻辑运算，寄存器间数据传输等操作。 格式: opcode(6 bits) | rs(5 bits) | rt(5 bits) | rd(5 bits) | shamt(5 bits) | funct(6 bits) //shamt: 位移量shift amount, funct: 决定加法还是减法
+    
        2. I-Format 立即数型 格式: opcode(6 bits) | rs(5 bits) | rt(5 bits) | Immediate(16 bits)
-       3. J-format 跳转型 格式: opcode(6 bits) | Address(26 bits)
+          
+       4. J-format 跳转型 格式: opcode(6 bits) | Address(26 bits)
 
 
 
