@@ -89,9 +89,9 @@
 
 24. Q: MIPS 架构的指令格式有哪些？
 
-    A: 1. R-Format(ADD) MIPS汇编语言中最常见的指令格式，用于算数运算，逻辑运算，寄存器间数据传输等操作。 格式: opcode(6 bits) | rs(5 bits) | rt(5 bits) | rd(5 bits)
-       2.
-       3.
+    A: 1. R-Format(ADD) 寄存器型  MIPS汇编语言中最常见的指令格式，用于算数运算，逻辑运算，寄存器间数据传输等操作。 格式: opcode(6 bits) | rs(5 bits) | rt(5 bits) | rd(5 bits) | shamt(5 bits) | funct(6 bits) //shamt: 位移量shift amount, funct: 决定加法还是减法
+       2. I-Format 立即数型 格式: opcode(6 bits) | rs(5 bits) | rt(5 bits) | Immediate(16 bits)
+       3. J-format 跳转型 格式: opcode(6 bits) | Address(26 bits)
 
 
 
