@@ -3,6 +3,7 @@
 - [1. 简介](#简介)
 - [2. Q&A](#qa)
 - [3.笔记](#笔记)
+- [4.单词](#单词)
 
 ## 简介
 ## Q&A
@@ -120,18 +121,46 @@
          
     Example2:
 
-         module example(x1,x2,x3,f)
-         input(x1,x2,x3)
+      module example(x1,x2,x3,f);
+         input(x1,x2,x3);
+         output(f);
+
+         and (g, x1. x2);
+         not (k, x2);
+         and (h, k, x3);
+         or (f, g, h);
          
+      endmodule
 
-->Behavioral: use logic expressions and c-like programming construsts define the behaviour of the circuit. 使用逻辑表达式与类似C的结构定义
+   
 
-    Example:
+->Behavioral: use logic expressions and c-like programming construsts define the behaviour of the circuit. 使用逻辑表达式与类似C的结构定义 
 
-          
-2. 
+    Example1:
+    module example3(x1,x2,x3,f);
+     input x1, x2, x3;
+     output f;
 
+     assign f= (x1 & x2) | (~x2 & x3);
+    endmodule
 
+    Example2:
+    module example(x1,x2,x3,x4, g, f, h);
+     input x1, x2, x3, x4;
+     output g, f, h;
+
+     assign g = (x1 & x3) |(x2 & x4);
+     assign h = (x1 | ~x3) & (~x2 | x4);
+     assign f = g | h;
+    
+    endmodule
+               
+2. 过程语句(Procedural Statements)
+
+## 单词
+1. Primitives 原语，基本元素
+2. tedious 单调乏味的
+3. concurrent 并发的
 
 
 
