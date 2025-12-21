@@ -106,13 +106,30 @@
        4. J-format 跳转型 格式: opcode(6 bits) | Address(26 bits)
 
 ## 笔记
-Representation of digital circuit in verilog 
+1. Representation of digital circuit in verilog 
 
-->Structural: use verilog constructs
+->Structural: use verilog constructs 使用Verilog结构
 
-->Behavioral: use logic expressions and c-like programming construsts define the behaviour of the circuit.
+    Example1: 
 
+         AND gate --> and (y, x1, x2)
 
+         OR gate  --> or (y, x1, x2, x3, x4)
+         
+         NOT gate --> not (y, x)
+         
+    Example2:
+
+         module example(x1,x2,x3,f)
+         input(x1,x2,x3)
+         
+
+->Behavioral: use logic expressions and c-like programming construsts define the behaviour of the circuit. 使用逻辑表达式与类似C的结构定义
+
+    Example:
+
+          
+2. 
 
 
 
