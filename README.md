@@ -1,123 +1,101 @@
-# EEE339
+# EEE339 学习笔记
+
 ## 目录
-- [1. 简介](#简介)
-- [2. Q&A](#qa)
-- [3.笔记](#笔记)
-- [4.单词](#单词)
+- [1. 简介](#1-简介)
+- [2. Q&A](#2-qa)
+- [3. 笔记](#3-笔记)
+- [4. 单词](#4-单词)
 
-## 简介
-## Q&A
-1. Q: 什么是编译器？
-   
-   A:   
+---
 
-3. Q: 什么是汇编器
-   
-   A:
+## 1. 简介
+*本部分记录课程核心背景与概览。*
 
-5. Q: 机器语言的优势
-   
-   A: 1. 允许程序员使用更自然地语言进行思考
-   
-      2. 语言可以根据其预期用途进行设计
-            
-      4. 可在具有不同指令集架构(ISA)的不同平台进行移植
+---
 
-7. Q:pytorch 是什么
+## 2. Q&A
 
-   A:用来做深度学习/神经网络的开源框架
+### 基础概念
+1. **Q: 什么是编译器？**
+   - **A:** 将高级语言编写的程序翻译成机器语言程序的工具。
 
-9. Q: OS, ISA, RISC, CISC 是什么？
+2. **Q: 什么是汇编器？**
+   - **A:** 将汇编语言翻译成机器语言的工具。
 
-   A:操作系统， Instruction set architecture指令集架构， 精简指令集计算机，复杂指令集计算机
+3. **Q: 高级语言相对于机器语言的优势？**
+   - **A:** 1. 允许程序员使用更自然的语言进行思考。
+     2. 语言可以根据其预期用途进行设计。
+     3. 具有良好的可移植性，可在不同指令集架构 (ISA) 的平台间移植。
 
-11. Q: 什么是指令集架构(ISA)?
+4. **Q: PyTorch 是什么？**
+   - **A:** 一个用于深度学习/神经网络的开源框架。
 
-    A: 1. 汇编语言程序员或者编译器眼中计算机系统属性。包括指令集可以执行哪些操作？指令格式？数据储存在哪里？寻址方式，如何访问数据？以及异常情况处理。
-    
-      2. 硬件与最底层软件的抽象接口
-         
-13. Q:现代化指令集架构有哪些？
+5. **Q: OS, ISA, RISC, CISC 是什么？**
+   - **A:** - **OS:** 操作系统 (Operating System)
+     - **ISA:** 指令集架构 (Instruction Set Architecture)
+     - **RISC:** 精简指令集计算机 (Reduced Instruction Set Computer)
+     - **CISC:** 复杂指令集计算机 (Complex Instruction Set Computer)
 
-    A: x86, PowerPC, DEC, Alpha, MIPs, SPARC, ARM, RISC-V
+6. **Q: 什么是指令集架构 (ISA)？**
+   - **A:** 1. 汇编程序员或编译器眼中计算机系统的属性。包括指令操作、格式、数据存储、寻址方式及异常处理。
+     2. 硬件与最底层软件之间的抽象接口。
 
-15. Q: 抽象系统构(Abstraction system)成有哪些？
+7. **Q: 现代化指令集架构有哪些？**
+   - **A:** x86, PowerPC, DEC Alpha, MIPS, SPARC, ARM, RISC-V。
 
-    A: 应用层 > 操作系统 > 指令集 > CPU > Circuit
+8. **Q: 抽象系统的构成有哪些？**
+   - **A:** 应用层 $\rightarrow$ 操作系统 $\rightarrow$ 指令集 $\rightarrow$ CPU $\rightarrow$ 电路。
 
 ### 计算机组织结构
+9. **Q: 处理器结构的作用？**
+   - **A:** 数据通路与控制，执行算术与逻辑运算并向其他组件发出指令。
 
-9. Q: 处理器结构作用
+10. **Q: 内存的作用？**
+    - **A:** 用于保存数据与指令，包括缓存、主内存、磁盘等。
 
-   A: 数据通路与控制，执行算数与逻辑运算以及向其他组件发出指令。
+11. **Q: 输入/输出结构的作用？**
+    - **A:** - **输入:** 向计算机发送数据（如键盘、鼠标）。
+      - **输出:** 从计算机获取数据（如屏幕、声卡、打印机）。
 
-11. Q: 内存作用
+### 性能指标
+12. **Q: 什么是相对性能？**
+    - **A:** $Performance = 1 / Execution\ Time$。性能之比即为相对性能。
 
-    A: 用于保存数据与指令，缓存，主内存，磁盘
+13. **Q: 什么是执行时间？**
+    - **A:** 包括**经过时间** (Elapsed Time) 和 **CPU时间**。
 
-13. Q: 输入结构作用
+14. **Q: 什么是经过时间 (Elapsed Time)？**
+    - **A:** 总响应时间，包括处理、I/O、OS 开销及空闲时间 (Idle Time)。
 
-    A: 向计算机发送数据，键盘，鼠标
+15. **Q: 什么是 CPU 时间？**
+    - **A:** 1. 处理特定任务所花费的时间，不包括等待 I/O 或运行其他程序的时间。
+      2. $$CPU\ Time = \frac{CPU\ clock\ cycles}{Clock\ rate}$$
 
-15. Q: 输出结构作用
+16. **Q: CPU 时钟周期表达式？**
+    - **A:** $$CPU\ clock\ cycles = IC \times CPI$$
+    - *注：IC 为指令数，CPI 为单条指令所需周期数。*
 
-    A: 从计算机获取数据，屏幕，声卡，打印机
+17. **Q: 什么是平均时钟周期 (Average CPI)？**
+    - **A:** $$Average\ CPI = \frac{Total\ CPU\ cycles}{Total\ Instruction\ Count}$$
 
+18. **Q: 什么是指令集？**
+    - **A:** 计算机的指令库 (Repertoire of instructions)。
 
-16. Q: 什么是相对性能
+19. **Q: MIPS 架构的指令格式有哪些？**
+    - **A:** 1. **R-Format (寄存器型):** `opcode(6) | rs(5) | rt(5) | rd(5) | shamt(5) | funct(6)`
+      2. **I-Format (立即数型):** `opcode(6) | rs(5) | rt(5) | Immediate(16)`
+      3. **J-Format (跳转型):** `opcode(6) | Address(26)`
 
-    A: 性能 = 1 / 执行时间(Execution Time), 性能之比即为相对性能
+---
 
-17. Q: 什么是执行时间？
+## 3. 笔记
 
-    A: 经过的时间(elapsed time) 以及 CPU时间
-
-18. Q: 什么是经过时间(elapsed time)？
-
-    A: 总响应时间，包括处理/ I/O / Os开销 / 空闲时间(idle time)
-
-19. Q: 什么是CPU时间？
-
-    A: 1. 处理特定任务所花费的时间，不包括等待I/O或者运行其他程序的时间， 包括用户CPU时间以及系统CPU时间，不同的程序受CPU和系统性能的影响程度也不同。
-    
-       2. CPU时间 = CPU时钟周期(CPU clock cycles) * CPU单周期时间(Clock cycle time) = CPU时钟周期(CPU clock cycles) / CPU时钟频率(Clock rates)
-
-21. Q: CPU时钟周期表达式
-
-    A: Instruction count(IC/指令数) * Cycles Per Instruction(CPI/每个指令所需周期数)
-
-22. Q: Average CPI， 平均时钟周期 
-
-    A: 平均时钟周期等于总CPU周期/总指令数
-
-23. Q: 什么是指令集
-
-    A: repertoire of instructions of a computer/计算机的指令库
-
-24. Q: Regdst(Register Destination - 目标寄存器选择) / AluSrc (ALU Source - ALU 数据源选择)
-
-    A:
-
-25. Q: MIPS 架构的指令格式有哪些？
-
-    A: 1. R-Format(ADD) 寄存器型  MIPS汇编语言中最常见的指令格式，用于算数运算，逻辑运算，寄存器间数据传输等操作。 格式: opcode(6 bits) | rs(5 bits) | rt(5 bits) | rd(5 bits) | shamt(5 bits) | funct(6 bits) //shamt: 位移量shift amount, funct: 决定加法还是减法
-    
-       2. I-Format 立即数型 格式: opcode(6 bits) | rs(5 bits) | rt(5 bits) | Immediate(16 bits)
-          
-       4. J-format 跳转型 格式: opcode(6 bits) | Address(26 bits)
-
-## 笔记
-**1. Representation of digital circuit in verilog**
-
-->Structural: use verilog constructs 使用Verilog结构
-
-    Example1: 
-
-         AND gate --> and (y, x1, x2)
-
-         OR gate  --> or (y, x1, x2, x3, x4)
-         
-         NOT gate --> not (y, x)
+### 1. Verilog 电路表示法
+- **Structural (结构化):** 使用原语描述物理连接。
+  ```verilog
+  and (y, x1, x2);
+  or (y, x1, x2, x3, x4);
+  not (y, x);
          
     Example2:
 
