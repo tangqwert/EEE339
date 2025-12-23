@@ -457,6 +457,17 @@ c = a <<< 2;       // 左移补 0：11...1100000 -> -32
 
 9. Precedence 优先级
 
+10. Instantiations 实例化
+
+11. overriding 覆盖
+
+12. explicit 显性
+
+13. iteration 迭代
+
+14. 
+
+
 
 
 
