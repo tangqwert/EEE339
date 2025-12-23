@@ -439,8 +439,75 @@ c = a <<< 2;       // 左移补 0：11...1100000 -> -32
 8.  **最低级**: 条件 `? :`
 
 
-##3.7 寄存器##
- 1. **D filpflop**
+## 3.7 锁存器&触发器 ##
+-** sequential vs combinational**
+
+|sequential 时序逻辑 | combinational 组合逻辑 |
+|输出由**当前输入与过去状态共同决定**|输出由当前输入决定|
+
+** 储存状态的元件 **
+|latch 锁存器|flip-flop 触发器|
+|level sensitive|edge sensitive|
+
+## latch ##
+
+1. ** SR latch **
+   (a) SR high active
+
+   |S|R|Q(next)|Meaning|
+   |0|0|Q(Prev)|Hold保持|
+   |1|0|1|Set 1|
+   |0|1|0|Reset(set 0)|
+   |1|1|?|Invalid/Forbidden非法|
+
+   (b) SR low active
+   invert
+
+2. ** D latch **
+
+   |D|E|Q(next)|
+   |D|1|D|
+   |D|0|Q(Pre)|
+
+
+## Flip-flops ##
+
+1. **D Filp-flop**
+  最常用，寄存器本质就是大量 DFF。
+
+  在时钟边沿：Q(next)=D
+
+  其余时间：Q 保持
+   ```veilog
+   always @(posedge clk) Q <= D;
+```
+
+2. **T flip-flop**
+   输入 T 控制是否翻转。
+
+   | T | Q(next)  |
+   | - | -------- |
+   | 0 | Q(prev)  |
+   | 1 | ~Q(prev) |
+
+   公式：
+
+   Q+=Q⊕T
+3. **JK Flip-flop**
+   可以看成“无非法态”的 SR flip-flop，且 J=K=1 时翻转。
+   
+| J | K | Q(next)  | Meaning |
+| - | - | -------- | ------- |
+| 0 | 0 | Q(prev)  | Hold    |
+| 1 | 0 | 1        | Set     |
+| 0 | 1 | 0        | Reset   |
+| 1 | 1 | ~Q(prev) | Toggle  |
+
+公式（常用形式之一）：
+Q+=JQ​'+ K'Q
+   
+
+
 
 
 
@@ -455,10 +522,8 @@ c = a <<< 2;       // 左移补 0：11...1100000 -> -32
 2. tedious 单调乏味的
 
 3. concurrent 并发的
-   
-4. lexical 词汇的
-   
-5. conventions 协议
+     |1|1|?|Invalid/Forbidden非法|
+ons 协议
     
 6. identifiers 标识符
 
@@ -476,7 +541,11 @@ c = a <<< 2;       // 左移补 0：11...1100000 -> -32
 
 13. iteration 迭代
 
-14. 
+14. asynchronous 异步
+
+15. synchronous 同步
+
+16. consequence 结果后果
 
 
 
@@ -489,15 +558,62 @@ c = a <<< 2;       // 左移补 0：11...1100000 -> -32
 
 
 
+```verilog
+module TFF (
+input t,
+input clk,
+input rst,
+output reg q
+);
+always @(posedge clk or posedge rst)
+if (rst) begin
+  q <= 1'b0;
+end else if (t) begin
+  q <= ~q;
+end
+end
+endmodule
 
+module scounter (
+input Vcc,
+input CLK,
+input Rst,
+output Tc
+);
 
+wire [3:0] Q;
 
+TFF tff1 (
+  .t (Vcc),
+  .clk (CLK),
+  .rst (Rst),
+  .q (Q[0])
+);
 
+TFF tff2(
+  .t (Vcc & Q[0]),
+  .clk (CLK),
+  .rst (Rst),
+  .q (Q[1])
+);
 
+TFF tff3(
+  .t (Vcc & Q[0] & Q[1]),
+  .clk (CLK),
+  .rst (Rst),
+  .q (Q[2])
+);
 
+TFF tff4(
+  .t (Vcc & Q[0] & Q[1] & Q[2]),
+  .clk (CLK),
+  .rst (Rst),
+  .q (Q[3])
+);
 
+assign Tc = Vcc & Q[0] & Q[1] & Q[2] & Q[3];
 
-
+endmodule
 
 
 
