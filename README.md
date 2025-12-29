@@ -20,6 +20,7 @@
   - [3.6 运算符系统](#36-运算符系统)
   - [3.7 锁存器&触发器](#37锁存器触发器)
 - [4. 单词表](#4-单词表)
+- [5. Computer architecture](#5-计算机架构)
 
 ---
 
@@ -546,6 +547,54 @@ ons 协议
 15. synchronous 同步
 
 16. consequence 结果后果
+
+
+# 5. Computer Architecture 计算机架构
+## 5.1 Organization of a computer
+### Processor:
+#### Data path: 
+-to do arithmetic and logic: e.g. adders, multipliers, shifters. 
+-用于执行算术和逻辑运算：例如加法器、乘法器、移位器
+#### Control
+-to give directions to the other components: e.g. tells the data path, memory, and IO devices what to do according to the instructions of the program
+-用于向其他组件发出指令：例如，根据程序的指令告诉数据通路、内存和 I/O 设备该做什么
+### Memory: 
+-Holds data and instructions: e.g. cache, main memory, disk.
+-用于保存数据和指令：例如缓存、主内存、磁盘。
+### Input: 
+-Sends data to the computer: e.g. keyboard, mouse.
+-向计算机发送数据：例如键盘、鼠标。
+### Output:
+-Gets data from the computer: e.g. screen, sound card, printer.
+-从计算机获取数据：例如屏幕、声卡、打印机。
+
+## 5.2 Instruction execution 指令执行周期
+### 1.Instruction Fetch: 
+-取指令, Obtain instruction from program storage
+### 2,Instruction decode: 
+-译指令，Determine required actions and instruction size
+### 3. Operand Fetch 
+-取数，locate and obtain operand data
+### 4. Execute
+-执行，compute result value or status
+### 5. Result store
+-写回, Deposit results in storage for later use
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
